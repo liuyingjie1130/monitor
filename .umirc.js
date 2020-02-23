@@ -1,7 +1,8 @@
-
+import darkTheme from '@ant-design/dark-theme';
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  "theme": darkTheme,
   routes: [
     {
       path: '/',
