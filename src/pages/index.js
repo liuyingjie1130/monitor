@@ -13,9 +13,9 @@ export default function() {
           </a>
         </li>
       </ul>
-      <Button type="danger">蛋蛋</Button>
-      <Button type="danger">老大</Button>
-      <Button type="danger">墩墩</Button>
+      <Button type='default'>蛋蛋</Button>
+      <Button type='default'>老大</Button>
+      <Button type='default'>墩墩</Button>
     </div>
   );
 }
