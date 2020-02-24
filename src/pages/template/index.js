@@ -49,7 +49,7 @@ render(){
             />
             {
                 [1,2,3].map((item,index)=>{
-                    return(<TemplateCard/>)
+                    return(<TemplateCard key={index}/>)
                 })
             }
         </div>
