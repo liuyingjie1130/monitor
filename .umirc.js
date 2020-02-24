@@ -10,7 +10,8 @@ export default {
       routes: [
         { path: '/', component: '../pages/index' },
         { path: '/404', component: '../pages/404' },
-        { path: '/tags', component: '../pages/tags' }
+        { path: '/tags', component: '../pages/tags' },
+        { path: '/template', component: '../pages/template' },
       ]
     }
   ],
