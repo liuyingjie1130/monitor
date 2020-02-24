@@ -6,11 +6,14 @@ export default {
   routes: [
     {
       path: '/',
-      component: '../layouts/index',
+      component: '../pages/current/current.js',
       routes: [
         { path: '/', component: '../pages/index' },
         { path: '/404', component: '../pages/404' },
-        { path: '/tags', component: '../pages/tags' }
+        { path: '/tags', component: '../pages/tags' },
+        { path:'/current',component:'../pages/current'},
+        { path:'/site',component:'../pages/site'},
+        { path:'edit-site',component:'../pages/edit-site'}
       ]
     }
   ],
