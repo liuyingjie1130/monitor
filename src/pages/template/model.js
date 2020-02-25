@@ -3,6 +3,9 @@ export default {
     namespace: 'template',
     state: {
       searchValue:'',
+      visible:false,
+      flag:'add',
+      tableData:[]
   },
     subscriptions: {
       setup({dispatch, history}) {
