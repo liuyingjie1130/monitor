@@ -77,7 +77,7 @@ class SiderDemo extends React.Component {
           <Content
             style={{
               margin: '24px 16px',
-              background: '#fff',
+              // background: '#fff',
               minHeight: 280,
             }}
           >
