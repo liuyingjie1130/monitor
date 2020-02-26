@@ -46,6 +46,16 @@ class SiderDemo extends React.Component {
         icon: 'deployment-unit',
         link: '/tags'
       },
+      {
+        name: '实时监控',
+        icon: 'clock-circle',
+        link: '/current'
+      },
+      {
+        name: '历史监控',
+        icon: 'fast-backward',
+        link: '/history'
+      },
     ]
   
     return (
@@ -77,7 +87,7 @@ class SiderDemo extends React.Component {
           <Content
             style={{
               margin: '24px 16px',
-              background: '#fff',
+              // background: '#fff',
               minHeight: 280,
             }}
           >
