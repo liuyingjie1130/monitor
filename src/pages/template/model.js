@@ -12,12 +12,12 @@ export default {
         history.listen(location => {
             // 初始化
           if(location.pathname !== '/template'){
-            dispatch({
-              type: 'updateStates',
-              payload: {
-                searchValue:'111'
-              }
-            })
+            // dispatch({
+            //   type: 'updateStates',
+            //   payload: {
+            //     searchValue:'111'
+            //   }
+            // })
           }
   
         });
