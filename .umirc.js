@@ -12,6 +12,8 @@ export default {
         { path: '/404', component: '../pages/404' },
         { path: '/tags', component: '../pages/tags' },
         { path: '/template', component: '../pages/template' },
+        { path: '/current', component: '../pages/current' },
+        { path: '/history', component: '../pages/history' },
       ]
     }
   ],
