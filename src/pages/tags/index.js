@@ -1,17 +1,22 @@
-import styles from './index.css';
-import { formatMessage } from 'umi-plugin-locale';
-export default function() {
+import Table from './components/Table'
+import { Component} from 'react';
+import {connect} from 'dva';
+
+class Tags extends Component {
+  constructor(props) {
+      super(props)
+      this.state={
+          
+      }
+    }
+  
+
+render(){
   return (
-    <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            {formatMessage({ id: 'index.start' })}
-          </a>
-        </li>
-      </ul>
-    </div>
+      <div>
+          <Table/>
+      </div>
   );
 }
+}
+export default connect()(Tags)
