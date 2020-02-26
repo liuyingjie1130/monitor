@@ -3,18 +3,21 @@ export default {
     namespace: 'template',
     state: {
       searchValue:'',
+      visible:false,
+      flag:'add',
+      tableData:[]
   },
     subscriptions: {
       setup({dispatch, history}) {
         history.listen(location => {
             // 初始化
           if(location.pathname !== '/template'){
-            dispatch({
-              type: 'updateStates',
-              payload: {
-                searchValue:'111'
-              }
-            })
+            // dispatch({
+            //   type: 'updateStates',
+            //   payload: {
+            //     searchValue:'111'
+            //   }
+            // })
           }
   
         });
