@@ -13,9 +13,22 @@ class ModalTemplate extends Component{
   handleOk = (e) => {
     e.preventDefault();
     const { tableData } = this.props;
-    // console.log(tableData,'tableData')
-    let valuesTag={};
-    this.props.form.validateFields((err, values) => {
+
+    function duplicate(arr){//判断数组是否有重复元素
+      let array = [];
+      arr.forEach(item=>array.push(item.name));
+      console.log(array)
+      let newArr = [...new Set(array)];
+      return !(newArr.length == array.length)
+    }
+    console.log(duplicate(tableData))
+    if(duplicate(tableData)){//如果重复提示错误
+      Modal.error({
+        title: '属性名称不能重复！',
+      });
+    }else{
+      let valuesTag={};
+      this.props.form.validateFields((err, values) => {
       if (!err) {
         valuesTag={...values};
         console.log(valuesTag,'valuesTag')
@@ -23,6 +36,9 @@ class ModalTemplate extends Component{
         this.handleCancel();
       }
     });
+    }
+    // console.log(tableData,'tableData')
+    
 
     
     

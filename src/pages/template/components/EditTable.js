@@ -127,7 +127,7 @@ class EditableTable extends React.Component {
           ) : null,
       },
     ];
-
+    // console.log(this.props.flag,333333)
     this.state = {
       dataSource: [
         {

@@ -4,7 +4,8 @@ import {connect} from 'dva'
 import React from 'react'
 import './commen.less'
 import styles from './index.less'
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon,ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN';
 import logo from '../assets/imgs/logo.png'
 
 const { Header, Sider, Content } = Layout;
@@ -49,6 +50,7 @@ class SiderDemo extends React.Component {
     ]
   
     return (
+      <ConfigProvider locale={zhCN}>
       <Layout style={{height:'100%'}}>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className={styles.logo}>
@@ -85,6 +87,7 @@ class SiderDemo extends React.Component {
           </Content>
         </Layout>
       </Layout>
+      </ConfigProvider>
     );
   }
 }
