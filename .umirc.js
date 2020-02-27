@@ -6,20 +6,14 @@ export default {
   routes: [
     {
       path: '/',
-      component: '../pages/current/current.js',
+      component: '../layouts/index',
       routes: [
         { path: '/', component: '../pages/index' },
         { path: '/404', component: '../pages/404' },
         { path: '/tags', component: '../pages/tags' },
-<<<<<<< HEAD
-        { path:'/current',component:'../pages/current'},
-        { path:'/site',component:'../pages/site'},
-        { path:'edit-site',component:'../pages/edit-site'}
-=======
         { path: '/template', component: '../pages/template' },
         { path: '/current', component: '../pages/current' },
         { path: '/history', component: '../pages/history' },
->>>>>>> aee21454260af53b34f1c16775f1c446447fec28
       ]
     }
   ],
