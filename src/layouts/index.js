@@ -46,6 +46,16 @@ class SiderDemo extends React.Component {
         icon: 'deployment-unit',
         link: '/tags'
       },
+      {
+        name: '实时监控',
+        icon: 'scan',
+        link: '/current'
+      },
+      {
+        name: '种植位管理',
+        icon: 'environment',
+        link: '/site'
+      }
     ]
   
     return (
