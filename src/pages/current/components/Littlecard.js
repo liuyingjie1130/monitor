@@ -31,7 +31,6 @@ class Littlecard extends Component {
       }
     
     details = (id)=>{
-   
         // console.log(id)
         this.props.dispatch({
             type:'current/updateStates',

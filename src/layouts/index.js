@@ -53,10 +53,20 @@ class SiderDemo extends React.Component {
         link: '/current'
       },
       {
+        name: '种植位管理',
+        icon: 'flag',
+        link: '/site'
+      },
+      {
         name: '历史监控',
         icon: 'fast-backward',
         link: '/history'
       },
+      {
+        name: '搜索',
+        icon: 'search',
+        link: '/Search'
+      }
     ]
   
     return (
