@@ -11,19 +11,18 @@ export default {
       setup({dispatch, history}) {
         history.listen(location => {
             // 初始化
-          if(location.pathname !== '/current'){
-            // dispatch({
-            //   type: 'updateStates',
-            //   payload: {
-            //     searchValue:'111'
-            //   }
-            // })
-          }
+          // if(location.pathname !== '/template'){
+          //   dispatch({
+          //     type: 'updateStates',
+          //     payload: {
+          //       searchValue:'111'
+          //     }
+          //   })
+          // }
   
         });
       }
     },
-    //异步操作-调接口
     effects: {
         *getAllDrivers({ payload }, { call, put, select }) { 
             const data=yield call(apis.getAllDrivers,payload);
@@ -39,7 +38,6 @@ export default {
           },
     },
   
-    //同步操作--指哪打哪
     reducers: {
       updateStates(state, action){
         return {

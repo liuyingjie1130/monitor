@@ -1,9 +1,10 @@
 // import {connect,routerRedux} from 'dva';
 import { Component} from 'react';
 import { connect } from 'dva';
-import { Spin, Button, Icon, Card, Input,Modal,Row,Col } from 'antd';
+import { Spin, Button, Icon, Card, Input,Modal,Row,Col,Pagination } from 'antd';
 import TemplateCard from './components/TemplateCard'
 import ModalTemplate from './components/ModalTemplate'
+import Page from './components/Page'
 import styles from './index.less';
 
 import moment from 'moment';
@@ -17,7 +18,7 @@ class Template extends Component {
             
         }
       }
-      
+    //  搜索框输入 
     onChange = (e) =>{
         this.props.dispatch({
             type:"template/updateStates",
@@ -26,6 +27,7 @@ class Template extends Component {
             }
          })
      }
+    //  搜索
     onSearch = (value) =>{
         // console.log(value)
         this.props.dispatch({
@@ -35,6 +37,7 @@ class Template extends Component {
             }
         })
     }
+    // 添加模板
     add = () =>{
         this.props.dispatch({
             type:'template/updateStates',
@@ -44,13 +47,14 @@ class Template extends Component {
             }
         })
     }
+    
 
 render(){
     const {searchValue} = this.props;
     // console.log(searchValue)
     return (
         <div style={{padding:20}}>
-            <div style={{display:'flex',minWidth:400,width:400,justifyContent:'space-between'}}>
+            <div className={styles.searchBar}>
                 <Search
                 placeholder="请输入模板名称"
                 value={searchValue}
@@ -72,6 +76,9 @@ render(){
                 })
             }
             </Row>
+            <div className={styles.page}>
+                <Page/>
+            </div>
             <ModalTemplate/>
         </div>
     );

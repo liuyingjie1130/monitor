@@ -1,16 +1,11 @@
-// import {connect,routerRedux} from 'dva';
 import { Component} from 'react';
 import { connect } from 'dva';
-import { Spin, Button, Icon,Modal} from 'antd';
-import React from 'react';
+import { Icon, Modal, } from 'antd';
 import styles from './Littlecard.less'
-
-
-import moment from 'moment';
 
 function info() {
     Modal.info({
-        title: '实时监控信息',
+        title: '实时监控情况',
         content: (
             <div>
                 <p>种植号名称：</p>
@@ -26,67 +21,40 @@ function info() {
         onOk() {},
     });
 }
-// const {Search}=Input;
-// const confirm=Modal.confirm;
 
-class Littlecard extends React.Component {
+class Littlecard extends Component {
     constructor(props) {
         super(props)
         this.state={
             
         }
-    }
-
-    onChange = (e) =>{
+      }
+    
+    details = (id)=>{
+        // console.log(id)
         this.props.dispatch({
-            type:"current/updateStates",
+            type:'current/updateStates',
             payload:{
-                searchValue:e.target.value
-            }
-        })
-    }
-    onSearch = (value) =>{
-        console.log(value)
-        this.props.dispatch({
-            type:"current/getAllDrivers",
-            payload:{
-                index:1
+                // flag:'details',
+                visible:true
             }
         })
     }
 
-    // details = (id)=>{
-    //     console.log(id);
-    //     this.props.dispatch({
-    //         type:'current/updateStates',
-    //         payload:{
-    //             // flag:'details',
-    //             visible:true
-    //         }
-    //     })
-    // }
-
-    render(){  
-        const {searchValue} =this.props;
-        console.log(searchValue)
-        return (
-            <div className={styles.page}>
-                {/* 卡片 */}
-                <div className={styles.card}>
-                    <div className={styles.case}>
-                        <span>编号名称：1</span>
-                        <span className={styles.right}><Icon type="alert" theme="twoTone" twoToneColor="#52c41a"/></span>
-                    </div>
-                    <div className={styles.case}>
-                        <span>时间：{new Date().toLocaleTimeString()}</span>
-                        {/* <span className={styles.right}><Icon type="zoom-in" onClick={()=>{this.details(1)}}/></span> */}
-                        <span className={styles.right}><Icon type="zoom-in" onClick={info}/></span>
-                    </div>
-                </div>
-            </div>  
-        );
-    }
+render(){
+    // console.log(searchValue)
+    return (
+        <div className={styles.card}>
+            <div>
+                <span>编号名称：</span>
+                <span className={styles.right}><Icon type="alert"theme="twoTone" twoToneColor="#52c41a"/></span>
+            </div>
+            <div>
+                <span>时间：{new Date().toLocaleTimeString()}</span>
+                <span className={styles.right}><Icon type="zoom-in" onClick={info}/></span>
+            </div>
+        </div>
+    );
 }
-
-export default connect(({current})=>(current))(Littlecard)
-
+}
+ export default connect(({current})=>(current))(Littlecard)

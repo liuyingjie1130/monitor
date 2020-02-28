@@ -1,6 +1,6 @@
 import apis from '../../services/index'
 export default {
-    namespace: 'template',
+    namespace: 'site',
     state: {
       searchValue:'',
       visible:false,
@@ -11,14 +11,14 @@ export default {
       setup({dispatch, history}) {
         history.listen(location => {
             // 初始化
-          if(location.pathname !== '/template'){
-            // dispatch({
-            //   type: 'updateStates',
-            //   payload: {
-            //     searchValue:'111'
-            //   }
-            // })
-          }
+          // if(location.pathname !== '/template'){
+          //   dispatch({
+          //     type: 'updateStates',
+          //     payload: {
+          //       searchValue:'111'
+          //     }
+          //   })
+          // }
   
         });
       }

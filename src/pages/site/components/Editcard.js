@@ -87,7 +87,7 @@ class EditableCell extends React.Component {
   }
 }
 
-class EditableTable extends React.Component {
+class Editcard extends React.Component {
   constructor(props) {
     super(props);
     this.columns = [
@@ -183,7 +183,7 @@ class EditableTable extends React.Component {
   render() {
     const { dataSource } = this.state;
     this.props.dispatch({
-        type:'template/updateStates',
+        type:'site/updateStates',
         payload:{
             tableData:dataSource
         }
@@ -227,4 +227,4 @@ class EditableTable extends React.Component {
     );
   }
 }
-export default connect(({template})=>(template))(EditableTable)
+export default connect(({site})=>(site))(Editcard)

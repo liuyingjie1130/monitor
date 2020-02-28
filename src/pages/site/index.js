@@ -1,8 +1,10 @@
 import { Component} from 'react';
 import { connect } from 'dva';
 import { Spin, Button, Icon, Card, Input,Modal,Row,Col,Pagination } from 'antd';
+import Littlecard from './components/Littlecard.js';
+import ModalTemplate from './components/Modeltemplate';
+import Page from './components/Page.js'
 import styles from './index.less';
-import Littlecard from './components/Littlecard.js'
 
 import moment from 'moment';
 
@@ -18,7 +20,7 @@ class Finsh extends Component {
     //  搜索框输入 
     onChange = (e) =>{
         this.props.dispatch({
-            type:"current/updateStates",
+            type:"site/updateStates",
             payload:{
                 searchValue:e.target.value
             }
@@ -28,9 +30,19 @@ class Finsh extends Component {
     onSearch = (value) =>{
         // console.log(value)
         this.props.dispatch({
-            type:"current/getAllDrivers",
+            type:"site/getAllDrivers",
             payload:{
                 index:1
+            }
+        })
+    }
+    // 添加新建种植号
+    add = () =>{
+        this.props.dispatch({
+            type:'site/updateStates',
+            payload:{
+                flag:'add',
+                visible:true
             }
         })
     }
@@ -39,19 +51,36 @@ render(){
     const {searchValue} = this.props;
     // console.log(searchValue)
     return (
-        <div style={{padding:20}}>            
+        <div style={{padding:20}}>  
+
+            {/* 此处为搜索的那堆 */}
+            <div className={styles.searchBar}>
+                {/* <Search
+                placeholder="请输入模板名称"
+                value={searchValue}
+                onSearch={this.onSearch}
+                onChange={this.onChange}
+                style={{ width: 250 }}
+                size="large"
+                /> */}
+                <Button size="large" onClick={this.add}>新建种植号</Button>
+            </div>          
             <Row gutter={16} style={{padding:'0px 0px'}}>
             {
                 [1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item,index)=>{
                     return(
                         <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
-                            <Littlecard />
+                            <Littlecard/>
                         </Col>)
                 })
             }
             </Row>
+            <ModalTemplate/>
+            <div className={styles.page}>
+                <Page/>
+            </div>
         </div>
     );
 }
 }
- export default connect(({current})=>(current))(Finsh)
+ export default connect(({site})=>(site))(Finsh)
