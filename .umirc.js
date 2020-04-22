@@ -14,6 +14,7 @@ export default {
         { path: '/template', component: '../pages/template' },
         { path: '/current', component: '../pages/current' },
         { path: '/history', component: '../pages/history' },
+        { path: '/site', component: '../pages/site' }
       ]
     }
   ],

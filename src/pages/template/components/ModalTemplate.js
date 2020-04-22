@@ -38,10 +38,6 @@ class ModalTemplate extends Component{
     });
     }
     // console.log(tableData,'tableData')
-    
-
-    
-    
   };
 
 // 取消
