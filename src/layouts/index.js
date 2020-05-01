@@ -46,6 +46,7 @@ class SiderDemo extends React.Component {
   }
   render() {
     const {selectedKeys} = this.props
+    console.log(selectedKeys,2)
     const menu = [
       {
         name: '模板管理',
@@ -80,7 +81,7 @@ class SiderDemo extends React.Component {
     ]
     const menuHeader = (
       <Menu>
-        <Menu.Item key="setting:1">你好 - 臭小猪</Menu.Item>
+        <Menu.Item key="setting:1"><span>{'你好'+window.localStorage.getItem('user_name')}</span></Menu.Item>
         <Menu.Item key="setting:2"  onClick={this.changePassword}><Icon type="user" />修改密码</Menu.Item>
         <Menu.Item key="logout" onClick={this.logout}><span ><Icon type="logout" />退出登录</span></Menu.Item>
         <Menu.Item key="license" onClick={this.showLicense}><span ><Icon type="audit" />许可信息</span></Menu.Item>
@@ -95,6 +96,7 @@ class SiderDemo extends React.Component {
           </div>
           <Menu theme="dark" mode="inline" 
 
+            defaultSelectedKeys={['/current']}
             selectedKeys={selectedKeys}
             onSelect={this.onMenuSelected}>
             {menu.map((item)=>{

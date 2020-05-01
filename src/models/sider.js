@@ -1,14 +1,14 @@
 export default {
   namespace: 'sider',
   state: {
-    selectedKeys: ['/tags'],
+    selectedKeys: ['/current'],
 },
   subscriptions: {
 		setup({dispatch, history}) {
 			history.listen(location => {
         if(location.pathname !== '/login'){
 
-          let selectedKeys = []
+          let selectedKeys = ['/current']
           if(location.pathname.includes('/modifyPassword')){
             selectedKeys = ['/user']
           }else{
