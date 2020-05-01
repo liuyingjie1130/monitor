@@ -1,17 +1,13 @@
 import apis from '../../services/index'
 export default {
-    namespace: 'template',
+    namespace: 'login',
     state: {
-      searchValue:'',
-      visible:false,
-      flag:'add',
-      tableData:[]
   },
     subscriptions: {
       setup({dispatch, history}) {
         history.listen(location => {
             // 初始化
-          if(location.pathname === '/template'){
+          if(location.pathname === '/login'){
             // dispatch({
             //   type: 'updateStates',
             //   payload: {
