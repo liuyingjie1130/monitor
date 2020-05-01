@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/dark-theme": "^1.0.3",
+    "@ant-design/icons": "^4.1.0",
     "antd": "^3.19.5",
     "dva": "^2.6.0-beta.6",
     "file-saver": "^2.0.2",

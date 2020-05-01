@@ -4,11 +4,12 @@ export default {
   treeShaking: true,
   "theme": darkTheme,
   routes: [
+    { path: "/login", component: "../pages/login" },
     {
       path: '/',
       component: '../layouts/index',
       routes: [
-        { path: '/', component: '../pages/index' },
+        { path: '/', component: '../pages/current' },
         { path: '/404', component: '../pages/404' },
         { path: '/tags', component: '../pages/tags' },
         { path: '/template', component: '../pages/template' },
