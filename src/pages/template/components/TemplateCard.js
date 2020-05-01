@@ -18,8 +18,6 @@ class TemplateCard extends Component {
       }
     // 编辑模板
     edit = (id)=>{
-   
-        // console.log(id)
         this.props.dispatch({
             type:'template/updateStates',
             payload:{
@@ -30,7 +28,6 @@ class TemplateCard extends Component {
     }
     //   删除模板
     delete = (id,name)=>{
-        // console.log(id)
         confirm({
             title: '确定要删除该模板吗?',
             content: name,
@@ -45,7 +42,6 @@ class TemplateCard extends Component {
 
 render(){
     const {searchValue} =this.props;
-    // console.log(searchValue)
     return (
         <div className={styles.card}>
             <div className={styles.img}><img src={imgT} style={{width:'100%'}}/></div>
