@@ -1,8 +1,14 @@
 import darkTheme from '@ant-design/dark-theme';
+let path = require('path');
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
   "theme": darkTheme,
+  alias: {
+    '@': path.resolve(__dirname, './src'),
+    api: path.resolve(__dirname, './src/services/'),
+    components: path.resolve(__dirname, './src/components'),
+  },
   routes: [
     { path: "/login", component: "../pages/login" },
     {
@@ -43,4 +49,10 @@ export default {
       },
     }],
   ],
+  proxy: {
+    '/api/v1': {
+      target: 'http://localhost:3001',
+      changeOrigin: true,
+    }
+  }
 }

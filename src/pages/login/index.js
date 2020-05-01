@@ -11,6 +11,13 @@ class LoginForm extends Component {
    
     
     handleSubmit = e => {
+        this.props.dispatch({
+            type:'login/login',
+            payload:{
+                user_name:'lyj1',
+                user_password:'123'
+            }
+        })
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
           if (!err) {
