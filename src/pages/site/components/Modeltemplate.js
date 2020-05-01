@@ -1,6 +1,6 @@
 import {connect} from 'dva';
 import {Component} from 'react';
-import { Modal, Button,Form ,Select,Input, } from 'antd';
+import { Modal, Button,Form ,Select,Input } from 'antd';
 import Editcard from './Editcard';
 // import validator from 'validator';
 const {Option}=Select;
@@ -38,7 +38,6 @@ class ModalTemplate extends Component{
         }
         // console.log(tableData,'tableData')
     };
-
     // 取消
     handleCancel = () => {
         this.props.dispatch({
@@ -47,8 +46,7 @@ class ModalTemplate extends Component{
             visible:false,
         }
         });
-    };
-        
+    };  
     render(){
     const { getFieldDecorator } = this.props.form;
     const { visible,flag} = this.props;
@@ -56,7 +54,19 @@ class ModalTemplate extends Component{
     const footer=<div>    
             <Button onClick={this.handleOk} type="danger">完 成</Button>
             <Button onClick={this.handleCancel}>取 消</Button>
-        </div>
+        </div> 
+    function onChange(value) {
+        console.log(`selected ${value}`);
+    }
+    function onBlur() {
+        console.log('blur');
+    }
+    function onFocus() {
+        console.log('focus');
+    }
+    function onSearch(val) {
+        console.log('search:', val);
+    }
     return (
         <div>
             <Modal
@@ -77,9 +87,29 @@ class ModalTemplate extends Component{
                         rules: [{ required: true, message: '请输入名称' }],
                         })(<Input placeholder="请输入名称" />)}
                     </Form.Item>
+                    <Form.Item label="品系" style={{paddingLeft: '70px'}}>
+                        {getFieldDecorator('name', {
+                        rules: [{ required: true}],
+                        })(<Select
+                            showSearch
+                            style={{ width: 390 }}
+                            placeholder="请选择品系"
+                            optionFilterProp="children"
+                            onChange={onChange}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            <Option value="苹果">苹果</Option>
+                            <Option value="梨">梨</Option>
+                            <Option value="玫瑰花">玫瑰花</Option>
+                          </Select>)}
+                    </Form.Item>
                     <Form.Item label="描述" style={{paddingLeft: '70px'}}>
                         {getFieldDecorator('description', {
-                        // initialValue:template.description,
                         })(<Input placeholder="请输入描述"/>)}
                     </Form.Item>
                     <Editcard/>

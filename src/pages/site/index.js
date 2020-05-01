@@ -5,6 +5,7 @@ import Littlecard from './components/Littlecard.js';
 import ModalTemplate from './components/Modeltemplate';
 import Page from './components/Page.js'
 import styles from './index.less';
+import SearchBar from './components/Search'
 
 import moment from 'moment';
 
@@ -13,10 +14,9 @@ const confirm=Modal.confirm;
 class Finsh extends Component {
     constructor(props) {
         super(props)
-        this.state={
-            
+        this.state={        
         }
-      }
+    }
     //  搜索框输入 
     onChange = (e) =>{
         this.props.dispatch({
@@ -51,33 +51,32 @@ render(){
     const {searchValue} = this.props;
     // console.log(searchValue)
     return (
-        <div style={{padding:20}}>  
+        <div>
+            <div style={{padding:20}}>  
 
-            {/* 此处为搜索的那堆 */}
-            <div className={styles.searchBar}>
-                {/* <Search
-                placeholder="请输入模板名称"
-                value={searchValue}
-                onSearch={this.onSearch}
-                onChange={this.onChange}
-                style={{ width: 250 }}
-                size="large"
-                /> */}
-                <Button size="large" onClick={this.add}>新建种植号</Button>
-            </div>          
-            <Row gutter={16} style={{padding:'0px 0px'}}>
-            {
-                [1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item,index)=>{
-                    return(
-                        <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
-                            <Littlecard/>
-                        </Col>)
-                })
-            }
-            </Row>
-            <ModalTemplate/>
-            <div className={styles.page}>
-                <Page/>
+                {/* 此处为搜索的那堆 */}
+                <div className={styles.searchBar}>
+                    <span className={styles.left}><SearchBar/></span>
+                    <div className={styles.new}>
+                        <Button className={styles.right} size="large" onClick={this.add}>新建种植号</Button>
+                    </div>
+                </div> 
+                <div>
+                    <Row gutter={16} style={{padding:'0px 0px'}}>
+                    {
+                        [1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item,index)=>{
+                            return(
+                                <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
+                                    <Littlecard/>
+                                </Col>)
+                        })
+                    }
+                    </Row>
+                    <ModalTemplate/>
+                </div>    
+                <div className={styles.page}>
+                    <Page/>
+                </div>
             </div>
         </div>
     );

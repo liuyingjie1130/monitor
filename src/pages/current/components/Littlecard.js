@@ -8,20 +8,20 @@ function info() {
         title: '实时监控情况',
         content: (
             <div>
-                <p>种植号名称：</p>
-                <p>光照强度：</p>
-                <p>二氧化碳浓度：</p>
-                <p>氧气浓度：</p>
-                <p>大气温度：</p>
-                <p>大气湿度：</p>
-                <p>土壤温度：</p>
-                <p>土壤湿度：</p>
+                <p>种植号名称：1</p>
+                <p>光照强度：2.838×10^(27)cd</p>
+                <p>二氧化碳浓度：1.977g/L</p>
+                <p>氧气浓度：310mg/L</p>
+                <p>大气温度：11℃</p>
+                <p>大气湿度：30%RH</p>
+                <p>土壤温度：6℃</p>
+                <p>土壤湿度：17%</p>
             </div>
         ),
         onOk() {},
     });
 }
-
+let dataArr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
 class Littlecard extends Component {
     constructor(props) {
         super(props)
@@ -29,7 +29,6 @@ class Littlecard extends Component {
             
         }
       }
-    
     details = (id)=>{
         // console.log(id)
         this.props.dispatch({
@@ -44,9 +43,9 @@ class Littlecard extends Component {
 render(){
     // console.log(searchValue)
     return (
-        <div className={styles.card}>
+        <div className={styles.card} >
             <div>
-                <span>编号名称：</span>
+                <span>编号名称：{Math.floor(Math.random()*30+1)}</span>
                 <span className={styles.right}><Icon type="alert"theme="twoTone" twoToneColor="#52c41a"/></span>
             </div>
             <div>

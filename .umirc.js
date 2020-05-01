@@ -13,9 +13,9 @@ export default {
         { path: '/tags', component: '../pages/tags' },
         { path: '/template', component: '../pages/template' },
         { path: '/current', component: '../pages/current' },
-        { path: '/site', component: '../pages/site' },
         { path: '/history', component: '../pages/history' },
-        { path: '/Search', component: '../pages/Search' },
+        { path: '/site', component: '../pages/site' },
+        { path: '/alert', component: '../pages/alert' }
       ]
     }
   ],

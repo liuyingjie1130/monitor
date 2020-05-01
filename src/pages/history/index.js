@@ -1,17 +1,34 @@
 import styles from './index.less';
-import { formatMessage } from 'umi-plugin-locale';
+import {Card, Row, Col, Input,} from 'antd';
+import Select from './components/Select.js';
+import Charts from './components/Charts.js';
+import Data from './components/Data.js';
+
+const { Search } = Input;
 export default function() {
   return (
     <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            {formatMessage({ id: 'index.start' })}
-          </a>
-        </li>
-      </ul>
+    {/* <div style={{margin:10}}>
+        选择设备：
+        <Search placeholder="input search text" onSearch={value => console.log(value)} style={{ width: 200 }} />
+    </div> */}
+    <div className="site-card-wrapper">
+        <Row gutter={16}>
+        <Col span={6}>
+            <Card bordered={false} style={{height:480}}>
+                <Select />
+            </Card>
+        </Col>
+        <Col span={18}>
+            <Card bordered={false}>
+                <Charts />     
+            </Card>
+            <Card bordered={false}>
+                <Data />     
+            </Card>
+        </Col>
+        </Row>
     </div>
+  </div>
   );
 }

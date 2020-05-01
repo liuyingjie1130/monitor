@@ -132,17 +132,17 @@ class Editcard extends React.Component {
       dataSource: [
         {
           name: '湿度',
-          description: '不咳嗽',
-          min: 0,
-          max:100,
-          unit:'m/s'
+          description: '气体中所含水蒸气量',
+          min: 30,
+          max:60,
+          unit:'RH'
         },
         {
             name: '温度',
-            description: '不发烧',
-            min: 0,
-            max:100,
-            unit:'m/s'
+            description: '物体的冷热程度冷',
+            min: -10,
+            max:40,
+            unit:'℃'
         },
       ],
       count: 2,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Collapse ,Icon,Button,Select,Divider,message,Input,DatePicker} from 'antd';
 import styles from './Search.less';
-import toExcel from '../../../utils/toExcel.js'
 
 const {Option} = Select;
 const { RangePicker } = DatePicker;
@@ -33,7 +32,7 @@ function InputNum(){
         </div>
     )
 }
-class SearchBar extends React.Component{
+class Search extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -92,29 +91,6 @@ class SearchBar extends React.Component{
         // 父组件传过来的函数  父传子
         this.props.onSearch();
     }
-    // 导出
-    export = async (e) => {
-        console.log("export")
-        // const site = Boolean(this.state.site)?this.state.site:'*',
-        //       device = Boolean(this.state.device)?this.state.device:'*',
-        //       tag = Boolean(this.state.tag)?this.state.tag:'*';
-        // await this.props.dispatch({
-        //     type:'tags/getTagsNopages',
-        //     payload:{
-        //         query:{
-        //             key:`${site}.${device}.${tag}`
-        //         }
-        //     }
-        // })
-
-        // const filterVal = ["index","name","description","min","max","unit"];
-        // const th = ["序号","位号名称","描述","下限","上限","计量单位"];
-        // const data = formatJson(filterVal, this.props.tagsNopages);
-        // function formatJson(filterVal, jsonData){
-        //     return jsonData.map(v => filterVal.map(j => v[j]))
-        // }
-        // toExcel({th: th, data, fileType:"xlsx",fileName:"位号浏览"})
-    }
     render(){
         return(
             <div className={styles.search}>
@@ -139,14 +115,21 @@ class SearchBar extends React.Component{
                         }} allowClear
                     />
                 </div>
+                <div className={styles.big}>
+                    <p style={{ float: 'left', fontSize: '12px', fontWeight: 600 }}>属性</p>
+                    <Input  value={this.state.num} onChange={this.onChangeNum} placeholder="请输入属性" size='large'
+                        style={{
+                            width: '140px',
+                            height: '32px',
+                            marginLeft: 8,
+                            fontSize: 12,
+                        }} allowClear
+                    />
+                </div>
                 <div className={styles.searchBtn} ><Button size='large' onClick={this.onSearch}>查询</Button></div>
                 <div className={styles.clearBtn} ><Button size='large' onClick={this.empty}>清空查询</Button></div>
-              {/* 导出 */}
-              {
-                  this.props.tags?<Button style={{ fontSize: 12, float: 'right' }} onClick={() => this.export('tags')}>导出</Button>:null
-              } 
             </div>
         )
     }
 }
-export default SearchBar
+export default Search

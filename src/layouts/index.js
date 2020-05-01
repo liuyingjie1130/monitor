@@ -63,9 +63,9 @@ class SiderDemo extends React.Component {
         link: '/history'
       },
       {
-        name: '搜索',
-        icon: 'search',
-        link: '/Search'
+        name: '报警管理',
+        icon: 'alert',
+        link: '/alert'
       }
     ]
   
