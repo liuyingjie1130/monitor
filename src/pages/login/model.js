@@ -25,7 +25,6 @@ export default {
     effects: {
         *login({ payload }, { call, put, select }) { 
             const data=yield call(apis.login,payload);
-           
             if(data.code==200){
               message.success('登录成功！');
               yield put(routerRedux.push('/current'))

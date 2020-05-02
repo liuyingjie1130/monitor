@@ -4,7 +4,7 @@ import {connect} from 'dva'
 import React from 'react'
 import './commen.less'
 import styles from './index.less'
-import { Layout, Menu, Icon,ConfigProvider,Dropdown } from 'antd'
+import { Layout, Menu, Icon,ConfigProvider,Dropdown,message } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN';
 import logo1 from '../assets/imgs/logoBig.png'
 import logo2 from '../assets/imgs/logoSmall.png'
@@ -16,7 +16,6 @@ class SiderDemo extends React.Component {
     collapsed: false,
 
   };
-
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
@@ -26,7 +25,7 @@ class SiderDemo extends React.Component {
   //Menu选中
   onMenuSelected = ({item, key, keyPath, selectedKeys, domEvent  })=>{
     const {dispatch} = this.props
-    // console.log(key,selectedKeys)
+  
     dispatch(routerRedux.push({pathname: key}))
     dispatch({
       type: 'sider/updateStates',
@@ -36,17 +35,14 @@ class SiderDemo extends React.Component {
     })
   }
   changePassword = ()=>{
-    
+    message.info('请联系管理员')
   }
   logout = ()=>{
-
-  }
-  showLicense = ()=>{
-
+    console.log('logout')
+    this.props.dispatch(routerRedux.push('/login'))
   }
   render() {
-    const {selectedKeys} = this.props
-    console.log(selectedKeys,2)
+    const {selectedKeys,dispatch} = this.props
     const menu = [
       {
         name: '模板管理',
@@ -84,7 +80,6 @@ class SiderDemo extends React.Component {
         <Menu.Item key="setting:1"><span>{'你好'+window.localStorage.getItem('user_name')}</span></Menu.Item>
         <Menu.Item key="setting:2"  onClick={this.changePassword}><Icon type="user" />修改密码</Menu.Item>
         <Menu.Item key="logout" onClick={this.logout}><span ><Icon type="logout" />退出登录</span></Menu.Item>
-        <Menu.Item key="license" onClick={this.showLicense}><span ><Icon type="audit" />许可信息</span></Menu.Item>
       </Menu>
     )
     return (
