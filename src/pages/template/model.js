@@ -24,14 +24,14 @@ export default {
       }
     },
     effects: {
-        *getAllDrivers({ payload }, { call, put, select }) { 
-            const data=yield call(apis.getAllDrivers,payload);
+        *getTemplates({ payload }, { call, put, select }) { 
+            const data=yield call(apis.getTemplates,payload);
            
             if(data.code==200){
               yield put({
                   type:"updateStates",
                   payload:{
-                    drivers:data.data
+                    templates:data.data
                   }
               })
             }

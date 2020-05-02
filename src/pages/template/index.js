@@ -18,6 +18,14 @@ class Template extends Component {
             
         }
       }
+    componentDidMount(){
+        this.props.dispatch({
+            type:'template/getTemplates',
+            payload:{
+
+            }
+        })
+    }
     //  搜索框输入 
     onChange = (e) =>{
         this.props.dispatch({
