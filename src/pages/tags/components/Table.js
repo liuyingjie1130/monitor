@@ -265,10 +265,57 @@ class TagsTable extends React.Component{
         下限:-10,
         计量单位:'℃'
       },
+      {
+        序号: '4',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },
+      {
+        序号: '5',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },
+      {
+        序号: '6',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },
+      {
+        序号: '7',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },
+      {
+        序号: '8',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },{
+        序号: '9',
+        位号名称: '温度',
+        描述: '',
+        上限: 35,
+        下限:-10,
+        计量单位:'℃'
+      },
     ];
     return(
       <Table columns={columns} dataSource={data} size="middle" 
-      pagination={{showQuickJumper:true,pageSize:2, showTotal:total => `共 ${total} 条`}}/>
+      pagination={{showQuickJumper:true,pageSize:5, showTotal:total => `共 ${total} 条`}}/>
     )
   }
 }
