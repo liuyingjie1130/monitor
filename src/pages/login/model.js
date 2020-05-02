@@ -29,7 +29,8 @@ export default {
             if(data.code==200){
               message.success('登录成功！');
               yield put(routerRedux.push('/current'))
-              window.localStorage.setItem('user_name',data.data)
+              window.localStorage.setItem('user_name',data.data.name)
+              window.localStorage.setItem('token',data.data.token)
             }else{
               message.error('用户名或密码错误！');
             }

@@ -28,11 +28,11 @@ const gen = apiName=>{
       method
     };
     const storage = window.localStorage;
+    console.log(storage,'sssssssssss')
     if(method === 'GET'){
       options.headers = {
-        'token': storage.token,
-        'tenantId': storage.tenantId,
-        'username': storage.name
+        'authorization': "Bearer " +storage.token,
+        'username': storage.user_name
       }
       if (clonePayload){
         Object.keys(clonePayload).forEach((item) => {
@@ -48,9 +48,8 @@ const gen = apiName=>{
     }else{
       options.headers = {
         'Content-Type': 'application/json',
-        'token': storage.token,
-        'tenantId': storage.tenantId,
-        'username': storage.name
+        'authorization': "Bearer " +storage.token,
+        'username': storage.user_name
       }
       options.body = JSON.stringify(clonePayload)
     }
