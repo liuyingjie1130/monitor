@@ -15,7 +15,7 @@ export default {
       path: '/',
       component: '../layouts/index',
       routes: [
-        { path: '/', component: '../pages/current' },
+        { path: '/', component: '../pages/current', redirect: '/login' },
         { path: '/404', component: '../pages/404' },
         { path: '/tags', component: '../pages/tags' },
         { path: '/template', component: '../pages/template' },
