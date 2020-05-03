@@ -93,7 +93,7 @@ class EditableTable extends React.Component {
     this.columns = [
       {
         title: '属性名称',
-        dataIndex: 'name',
+        dataIndex: 'attrName',
         editable:true
       },
       {
@@ -121,7 +121,7 @@ class EditableTable extends React.Component {
         dataIndex: 'operation',
         render: (text, record) =>
           this.state.dataSource.length >= 1 ? (
-            <Popconfirm title="确定要删除吗?" okText="确定" cancelText="取消"onConfirm={() => this.handleDelete(record.name)}>
+            <Popconfirm title="确定要删除吗?" okText="确定" cancelText="取消"onConfirm={() => this.handleDelete(record.attrName)}>
               <a>删除</a>
             </Popconfirm>
           ) : null,
@@ -129,35 +129,20 @@ class EditableTable extends React.Component {
     ];
     // console.log(this.props.flag,333333)
     this.state = {
-      dataSource: [
-        {
-          name: '湿度',
-          description: '不咳嗽',
-          min: 0,
-          max:100,
-          unit:'m/s'
-        },
-        {
-            name: '温度',
-            description: '不发烧',
-            min: 0,
-            max:100,
-            unit:'m/s'
-        },
-      ],
-      count: 2,
+      dataSource: this.props.flag==='edit'?this.props.tableData:[],
+      count: this.props.flag==='edit'?this.props.tableData.length:0,
     };
   }
 
-  handleDelete = name => {
+  handleDelete = attrName => {
     const dataSource = [...this.state.dataSource];
-    this.setState({ dataSource: dataSource.filter(item => item.name !== name) });
+    this.setState({ dataSource: dataSource.filter(item => item.attrName !== attrName) });
   };
 
   handleAdd = () => {
     const { count, dataSource } = this.state;
     const newData = {
-        name: '名称',
+        attrName: '名称',
         description: '描述',
         min:0,
         max:100,
@@ -171,7 +156,7 @@ class EditableTable extends React.Component {
 
   handleSave = row => {
     const newData = [...this.state.dataSource];
-    const index = newData.findIndex(item => row.name === item.name);
+    const index = newData.findIndex(item => row.attrName === item.attrName);
     const item = newData[index];
     newData.splice(index, 1, {
       ...item,
@@ -215,7 +200,7 @@ class EditableTable extends React.Component {
           添加属性
         </Button>
         <Table
-          rowKey={record=>record.name+Math.random()}
+          rowKey={record=>record.attrName+Math.random()}
           components={components}
           rowClassName={() => 'editable-row'}
           bordered

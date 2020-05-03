@@ -17,17 +17,24 @@ class TemplateCard extends Component {
         }
       }
     // 编辑模板
-    edit = (id)=>{
+    edit = (id,name)=>{
+        console.log(1111)
         this.props.dispatch({
             type:'template/updateStates',
             payload:{
                 flag:'edit',
-                visible:true
+            }
+        })
+        this.props.dispatch({
+            type:'template/getTemplateDetail',
+            payload:{
+                id:id
             }
         })
     }
     //   删除模板
     delete = (id,name)=>{
+        const {dispatch} = this.props
         confirm({
             title: '确定要删除该模板吗?',
             content: name,
@@ -35,22 +42,28 @@ class TemplateCard extends Component {
             okType: 'danger',
             cancelText: '取消',
             onOk() {
+                dispatch({
+                    type:'template/deleteTemplate',
+                    payload:{
+                        templateId:id
+                    }
+                })
               console.log('确定删除');
             },
           });
     }
 
 render(){
-    const {searchValue} =this.props;
+    const {searchValue,item} =this.props;
     return (
         <div className={styles.card}>
             <div className={styles.img}><img src={imgT} style={{width:'100%'}}/></div>
-            <p className={styles.name}>苹果种植位</p>
+            <p className={styles.name}>{item.name}</p>
             <div className={styles.lastRow}>
-                <div>苹果品种</div>
+                <div>{item.kind}</div>
                 <div>
-                    <Icon type="edit" className={styles.icon} onClick={()=>{this.edit(11)}} />
-                    <Icon type="delete" className={styles.icon} style={{marginLeft:10}} onClick={()=>{this.delete(11,'苹果种植位')}}/>
+                    <Icon type="edit" className={styles.icon} onClick={()=>{this.edit(item.id,item.name)}} />
+                    <Icon type="delete" className={styles.icon} style={{marginLeft:10}} onClick={()=>{this.delete(item.id,item.name)}}/>
                 </div>
             </div>
         </div>

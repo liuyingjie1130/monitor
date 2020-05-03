@@ -19,10 +19,24 @@ class Template extends Component {
         }
       }
     componentDidMount(){
-        this.props.dispatch({
+        const {dispatch,searchValue} = this.props
+        console.log(searchValue,'search')
+        dispatch({
             type:'template/getTemplates',
             payload:{
-
+                query:{
+                    key:''
+                }
+            }
+        })
+    }
+    publicGet = (value)=>{
+        this.props.dispatch({
+            type:"template/getTemplates",
+            payload:{
+                query:{
+                    key:value
+                }
             }
         })
     }
@@ -34,16 +48,11 @@ class Template extends Component {
                 searchValue:e.target.value
             }
          })
+         this.publicGet(e.target.value)
      }
     //  搜索
     onSearch = (value) =>{
-        // console.log(value)
-        this.props.dispatch({
-            type:"template/getAllDrivers",
-            payload:{
-                index:1
-            }
-        })
+        this.publicGet(value)
     }
     // 添加模板
     add = () =>{
@@ -58,7 +67,7 @@ class Template extends Component {
     
 
 render(){
-    const {searchValue} = this.props;
+    const {searchValue,templates} = this.props;
     // console.log(searchValue)
     return (
         <div style={{padding:20}}>
@@ -66,6 +75,7 @@ render(){
                 <Search
                 placeholder="请输入模板名称"
                 value={searchValue}
+                allowClear
                 onSearch={this.onSearch}
                 onChange={this.onChange}
                 style={{ width: 250 }}
@@ -76,10 +86,10 @@ render(){
             
             <Row gutter={16} style={{padding:'0px 0px'}}>
             {
-                [1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item,index)=>{
+                templates.map((item,index)=>{
                     return(
                         <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
-                            <TemplateCard />
+                            <TemplateCard item={item}/>
                         </Col>)
                 })
             }
