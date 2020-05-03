@@ -13,7 +13,6 @@ const mockData = () => {
             yAxis: Math.floor(Math.random() * 10)
         });
     }
-
     return result;
 };
 class Data extends Component {
