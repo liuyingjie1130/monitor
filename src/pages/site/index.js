@@ -5,8 +5,6 @@ import Littlecard from './components/Littlecard.js';
 import ModalTemplate from './components/Modeltemplate';
 import Page from './components/Page.js'
 import styles from './index.less';
-import SearchBar from './components/Search'
-
 import moment from 'moment';
 
 const {Search}=Input;
@@ -53,14 +51,18 @@ render(){
     return (
         <div>
             <div style={{padding:20}}>  
-
                 {/* 此处为搜索的那堆 */}
                 <div className={styles.searchBar}>
-                    <span className={styles.left}><SearchBar/></span>
-                    <div className={styles.new}>
-                        <Button className={styles.right} size="large" onClick={this.add}>新建种植号</Button>
-                    </div>
-                </div> 
+                <Search
+                placeholder="请输入名称"
+                value={searchValue}
+                onSearch={this.onSearch}
+                onChange={this.onChange}
+                style={{ width: 250 }}
+                size="large"
+                />
+                <Button size="large" onClick={this.add}>新建种植号</Button>
+            </div>
                 <div>
                     <Row gutter={16} style={{padding:'0px 0px'}}>
                     {

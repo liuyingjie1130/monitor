@@ -35,8 +35,6 @@ class Details extends React.Component {
           <p>实测值：</p>
           <p>正常值：</p>
           <p>报警描述：</p>
-          <p>开始时间：</p>
-          <p>结束时间：</p>
           <p>持续时长：</p>
         </Modal>
       </div>
