@@ -141,6 +141,7 @@ class EditableTable extends React.Component {
 
   handleAdd = () => {
     const { count, dataSource } = this.state;
+    
     const newData = {
         attrName: '名称',
         description: '描述',

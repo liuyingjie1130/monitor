@@ -290,7 +290,6 @@ class TagsTable extends React.Component{
         计量单位:'℃'
       },
       {
-        序号: '7',
         位号名称: '温度',
         描述: '',
         上限: 35,
@@ -314,7 +313,7 @@ class TagsTable extends React.Component{
       },
     ];
     return(
-      <Table columns={columns} dataSource={data} size="middle" 
+      <Table columns={columns} dataSource={data} size="middle" rowKey={record=>record.序号}
       pagination={{showQuickJumper:true,pageSize:5, showTotal:total => `共 ${total} 条`}}/>
     )
   }
