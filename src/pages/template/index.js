@@ -20,7 +20,7 @@ class Template extends Component {
       }
     componentDidMount(){
         const {dispatch,searchValue} = this.props
-        console.log(searchValue,'search')
+        // console.log(searchValue,'search')
         dispatch({
             type:'template/getTemplates',
             payload:{
@@ -67,8 +67,10 @@ class Template extends Component {
     
 
 render(){
-    const {searchValue,templates} = this.props;
+    const {searchValue,templates,pageNumber} = this.props;
     // console.log(searchValue)
+    // console.log(templates,111111111111)
+    let displayTems = templates.slice((pageNumber-1)*18,pageNumber*18)
     return (
         <div style={{padding:20}}>
             <div className={styles.searchBar}>
@@ -86,7 +88,7 @@ render(){
             
             <Row gutter={16} style={{padding:'0px 0px'}}>
             {
-                templates.map((item,index)=>{
+                displayTems.map((item,index)=>{
                     return(
                         <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
                             <TemplateCard item={item}/>
@@ -95,7 +97,7 @@ render(){
             }
             </Row>
             <div className={styles.page}>
-                <Page/>
+                <Page total={templates.length}/>
             </div>
             <ModalTemplate/>
         </div>

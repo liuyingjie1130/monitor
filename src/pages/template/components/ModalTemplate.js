@@ -18,11 +18,11 @@ class ModalTemplate extends Component{
     function duplicate(arr){//判断数组是否有重复元素
       let array = [];
       arr.forEach(item=>array.push(item.attrName));
-      console.log(array)
+      // console.log(array)
       let newArr = [...new Set(array)];
       return !(newArr.length == array.length)
     }
-    console.log(duplicate(tableData))
+    // console.log(duplicate(tableData))
     if(duplicate(tableData)){//如果重复提示错误
       Modal.error({
         title: '属性名称不能重复！',
@@ -32,7 +32,7 @@ class ModalTemplate extends Component{
       this.props.form.validateFields((err, values) => {
       if (!err) {
         valuesTag={...values,paramList:tableData};
-        console.log(valuesTag,'valuesTag')
+        // console.log(valuesTag,'valuesTag')
         if(flag==='edit'){
           dispatch({
             type:'template/updateTemplate',
@@ -71,7 +71,7 @@ render(){
   const { visible,flag,template,tableData} = this.props;
   const title= flag==="edit"?'编辑模板':'添加模板'
   const need = flag==="edit"
-  console.log(template,222222222222,tableData)
+  // console.log(template,222222222222,tableData)
   const footer=<div>    
     <Button onClick={this.handleOk} type="danger">完 成</Button>
     <Button onClick={this.handleCancel}>取 消</Button>
@@ -102,7 +102,7 @@ render(){
           rules: [{ required: true, message: '请选择种类' }],
             })(<Select>
              { 
-              ['苹果','梨','樱桃','哈密瓜'].map((item,index)=><Option key={index}value={item}>{item}</Option>)
+              ['热带雨林植物','地中海植物','热带沙漠植物','热带草原植物','热带季风植物','温带季风植物'].map((item,index)=><Option key={index}value={item}>{item}</Option>)
              }
             </Select>)}
           </Form.Item>
