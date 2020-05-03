@@ -51,7 +51,11 @@ export default {
   ],
   proxy: {
     '/api/v1': {
+<<<<<<< HEAD
       target: 'http://localhost:3001',
+=======
+      target: 'http://localhost:3000',
+>>>>>>> chenchen
       changeOrigin: true,
     }
   }
