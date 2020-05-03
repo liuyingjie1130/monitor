@@ -8,16 +8,25 @@ class Page extends React.Component{
     }
     onChangePage = (pageNumber) =>{
         console.log(pageNumber,'pageNumber')
+        this.props.dispatch({
+            type:'template/updateStates',
+            payload:{
+                pageNumber
+            }
+        })
     }
     render(){
+        const {total} = this.props
+        console.log(total,555555555555)
         return(
             <Pagination 
               size='large'
               showQuickJumper 
               showTotal={total => `共 ${total} 条`}
               defaultCurrent={1} 
-              total={500} 
+              total={total} 
               onChange={this.onChangePage} 
+              pageSize={18}
             />
         )
     }

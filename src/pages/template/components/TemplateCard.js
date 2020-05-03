@@ -18,7 +18,6 @@ class TemplateCard extends Component {
       }
     // 编辑模板
     edit = (id,name)=>{
-        console.log(1111)
         this.props.dispatch({
             type:'template/updateStates',
             payload:{
@@ -48,7 +47,7 @@ class TemplateCard extends Component {
                         templateId:id
                     }
                 })
-              console.log('确定删除');
+            //   console.log('确定删除');
             },
           });
     }
@@ -57,7 +56,7 @@ render(){
     const {searchValue,item} =this.props;
     return (
         <div className={styles.card}>
-            <div className={styles.img}><img src={imgT} style={{width:'100%'}}/></div>
+            <div className={styles.img}><img src={require(`../../../assets/imgs/${item.kind}.png`)} style={{width:'100%',height:'100%',borderRadius:'10%'}}/></div>
             <p className={styles.name}>{item.name}</p>
             <div className={styles.lastRow}>
                 <div>{item.kind}</div>
