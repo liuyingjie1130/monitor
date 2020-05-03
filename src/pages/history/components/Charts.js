@@ -23,7 +23,7 @@ class Charts extends Component {
                         <Option value="分">分</Option>
                         <Option value="时">时</Option>
                     </Select>
-                    <Button danger style={{backgroundColor:"#8B0000",color:"#fff",marginLeft:10}}>查询</Button>
+                    <Button type="danger" style={{backgroundColor:"#8B0000",color:"#fff",marginLeft:10}}>查询</Button>
                     <Button style={{marginLeft:50}}>导出</Button>
                 </div>
             </div>

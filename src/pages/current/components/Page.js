@@ -22,4 +22,4 @@ class Page extends React.Component{
         )
     }
 }
-export default connect(({site})=>(site))(Page)
+export default connect(({current})=>(current))(Page)
