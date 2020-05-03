@@ -11,12 +11,13 @@ class ModalTemplate extends Component{
   }
 // 提交
   handleOk = (e) => {
+    const {dispatch,flag,template} = this.props
     e.preventDefault();
     const { tableData } = this.props;
 
     function duplicate(arr){//判断数组是否有重复元素
       let array = [];
-      arr.forEach(item=>array.push(item.name));
+      arr.forEach(item=>array.push(item.attrName));
       console.log(array)
       let newArr = [...new Set(array)];
       return !(newArr.length == array.length)
@@ -30,10 +31,25 @@ class ModalTemplate extends Component{
       let valuesTag={};
       this.props.form.validateFields((err, values) => {
       if (!err) {
-        valuesTag={...values};
+        valuesTag={...values,paramList:tableData};
         console.log(valuesTag,'valuesTag')
-        console.log(tableData)
-        this.handleCancel();
+        if(flag==='edit'){
+          dispatch({
+            type:'template/updateTemplate',
+            payload:{
+              id:template.id,
+              ...valuesTag
+            }
+          })
+        }else{
+          dispatch({
+            type:'template/addTemplate',
+            payload:{
+              ...valuesTag
+            }
+          })
+        }
+        
       }
     });
     }
@@ -51,9 +67,11 @@ class ModalTemplate extends Component{
   };
       
 render(){
-  const { getFieldDecorator } = this.props.form;
-  const { visible,flag} = this.props;
+  const { getFieldDecorator, } = this.props.form;
+  const { visible,flag,template,tableData} = this.props;
   const title= flag==="edit"?'编辑模板':'添加模板'
+  const need = flag==="edit"
+  console.log(template,222222222222,tableData)
   const footer=<div>    
     <Button onClick={this.handleOk} type="danger">完 成</Button>
     <Button onClick={this.handleCancel}>取 消</Button>
@@ -74,13 +92,23 @@ render(){
         <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} hideRequiredMark={false}>
           <Form.Item label="模板名称" style={{paddingLeft: '70px'}}>
             {getFieldDecorator('name', {
-            //   initialValue:template.name,
+              initialValue:template&&need?template.name:null,
           rules: [{ required: true, message: '请输入模板名称' }],
             })(<Input placeholder="请输入模板名称" />)}
           </Form.Item>
+          <Form.Item label="种类" style={{paddingLeft: '70px'}}>
+            {getFieldDecorator('kind', {
+              initialValue:template&&need?template.kind:null,
+          rules: [{ required: true, message: '请选择种类' }],
+            })(<Select>
+             { 
+              ['苹果','梨','樱桃','哈密瓜'].map((item,index)=><Option key={index}value={item}>{item}</Option>)
+             }
+            </Select>)}
+          </Form.Item>
           <Form.Item label="模板描述" style={{paddingLeft: '70px'}}>
             {getFieldDecorator('description', {
-              // initialValue:template.description,
+              initialValue:template&&need?template.description:null,
             })(<Input placeholder="请输入描述"/>)}
           </Form.Item>
           <EditTable/>
