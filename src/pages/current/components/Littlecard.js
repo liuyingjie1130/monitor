@@ -42,16 +42,20 @@ class Littlecard extends Component {
 
 render(){
     // console.log(searchValue)
+    const {item} = this.props
     return (
         <div className={styles.card} >
-            <div>
+            {/* <div>
                 <span>编号名称：{Math.floor(Math.random()*30+1)}</span>
                 <span className={styles.right}><Icon type="alert"theme="twoTone" twoToneColor="#52c41a"/></span>
             </div>
             <div>
                 <span>时间：{new Date().toLocaleTimeString()}</span>
                 <span className={styles.right}><Icon type="zoom-in" onClick={info}/></span>
-            </div>
+            </div> */}
+            <div>{item.name}</div>
+            <div className={styles.cen}><span style={{fontSize:'40px'}}>{item.value}</span><span>{item.unit}</span></div>
+            <div style={{color:'grey'}}>{new Date(item.time).toLocaleString()}</div>
         </div>
     );
 }
