@@ -20,9 +20,7 @@ class Details extends React.Component {
   render() {
     return (
       <div>
-        <Button type="ghost" onClick={this.showModal} style={{color:"black"}}>
-          详情
-        </Button>
+        <span onClick={this.showModal} style={{color:"white",width:40}}>详情</span>
         <Modal
           title="报警详细情况"
           visible={this.state.visible}
@@ -35,7 +33,6 @@ class Details extends React.Component {
           <p>实测值：</p>
           <p>正常值：</p>
           <p>报警描述：</p>
-          <p>持续时长：</p>
         </Modal>
       </div>
     );
