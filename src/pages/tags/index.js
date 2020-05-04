@@ -1,7 +1,7 @@
 import Table from './components/Table'
 import { Component} from 'react';
 import {connect} from 'dva';
-import CollapsePanel from '../../components/highSearch/SearchBar'
+import CollapsePanel from '../../components/highSearch/index'
 
 class Tags extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Tags extends Component {
 render(){
   return (
       <div>
-          <CollapsePanel/>
+          <CollapsePanel tags={true}/>
           <Table/>
       </div>
   );

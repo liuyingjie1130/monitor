@@ -8,7 +8,8 @@ export default {
       flag:'add',
       tableData:[],
       templates:[],
-      template:{}
+      template:{},
+      pageNumber:1,
   },
     subscriptions: {
       setup({dispatch, history}) {
@@ -83,6 +84,8 @@ export default {
                 }
               }
             })
+          }else if(data.code===5){
+            message.error('模板名存在')
           }else{
             message.error('添加模板失败')
           }
@@ -116,6 +119,8 @@ export default {
               }
             }
           })
+        }else if(data.code===5){
+          message.error('模板名存在')
         }else{
           message.error('编辑模板失败')
         }
