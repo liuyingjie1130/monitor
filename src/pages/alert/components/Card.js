@@ -32,8 +32,8 @@ render(){
                 <p>位号：1</p> 
                 <p>实测值：</p>
                 <div className={styles.bottom}>
-                    <span>上下限：</span>    
-                    <span className={styles.right}><Details /></span>       
+                    <p>上下限：</p>    
+                    <div className={styles.right}><Details /></div>       
                 </div>            
             </div>
         </div>
