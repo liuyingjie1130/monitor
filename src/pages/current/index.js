@@ -1,6 +1,6 @@
 import { Component} from 'react';
 import { connect } from 'dva';
-import { Spin, Button, Icon, Card, Input,Modal,Row,Col,Pagination } from 'antd';
+import { Spin, Button, Icon, Card, Input,Modal,Row,Col,Pagination,Empty } from 'antd';
 import styles from './index.less';
 import Littlecard from './components/Littlecard.js'
 import Search from './components/Search.js'
@@ -17,6 +17,7 @@ class Finsh extends Component {
             
         }
       }
+      
     //  搜索框输入 
     onChange = (e) =>{
         this.props.dispatch({
@@ -38,26 +39,30 @@ class Finsh extends Component {
     }
     
 render(){
-    const {searchValue} = this.props;
-    // console.log(searchValue)
+    const {searchValue,rt} = this.props;
+    console.log(searchValue,'searchvalue',rt)
     return (
         <div>
             <div><Search/></div>
-            <div style={{padding:20}}>            
-                <Row gutter={16} style={{padding:'0px 0px'}}>
+            <div style={{padding:20}}> 
                 {
-                    [1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((item,index)=>{
-                        return(
-                            <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
-                                <Littlecard />
-                            </Col>)
-                    })
-                }
-                </Row>
+                    searchValue?<Row gutter={16} style={{padding:'0px 0px'}}>
+                    {
+                        rt.map((item,index)=>{
+                            return(
+                                <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
+                                    <Littlecard item={item}/>
+                                </Col>)
+                        })
+                    }
+                    </Row>:<Empty description={'请先选择种植位'} imageStyle={{height:'300px'}}/>
+                }           
+                
             </div>
-            <div style={{float:"right",marginRight:20,marginTop:40}}>
+            {/* {this.props.test.map((item)=><div>{item}</div>)} */}
+            {/* <div style={{float:"right",marginRight:20,marginTop:40}}>
                 <Page/>
-            </div>
+            </div> */}
         </div>
     );
 }
