@@ -16,8 +16,8 @@ class Page extends React.Component{
         })
     }
     render(){
-        const {total} = this.props
-        console.log(total,555555555555)
+        const {total,pageNumber} = this.props
+        console.log(total,555555555555,pageNumber)
         return(
             <Pagination 
               size='large'
@@ -27,6 +27,7 @@ class Page extends React.Component{
               total={total} 
               onChange={this.onChangePage} 
               pageSize={18}
+              current={pageNumber}
             />
         )
     }
