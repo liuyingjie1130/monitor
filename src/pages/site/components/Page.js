@@ -16,7 +16,8 @@ class Page extends React.Component{
               showQuickJumper 
               showTotal={total => `共 ${total} 条`}
               defaultCurrent={1} 
-              total={500} 
+              total={18} 
+              pageSize={18}
               onChange={this.onChangePage} 
             />
         )
