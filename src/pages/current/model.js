@@ -1,9 +1,11 @@
 import apis from '../../services/index'
+import io from 'socket.io-client'
 export default {
     namespace: 'current',
     state: {
-      // searchValue:'',
+      searchValue:'',
       visible:false,
+      rt:[],
       // flag:'add',
       // tableData:[]
   },
