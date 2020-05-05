@@ -21,4 +21,4 @@ render(){
   );
 }
 }
-export default connect()(Tags)
+export default connect(({tags})=>(tags))(Tags)

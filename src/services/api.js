@@ -9,4 +9,5 @@ export default {
     addTemplate:'POST api/v1/template/add',//
     deleteTemplate:'POST api/v1/template/delete',//
     updateTemplate:'POST api/v1/template/update',//
+    getTags:'POST api/v1/tags/list'
   }

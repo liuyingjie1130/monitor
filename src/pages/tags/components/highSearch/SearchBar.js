@@ -1,7 +1,8 @@
 import React from 'react';
 import { Collapse ,Icon,Button,Select,Divider,message,Input,DatePicker} from 'antd';
 import styles from './SearchBar.less';
-import toExcel from '../../utils/toExcel.js'
+import toExcel from '../../../../utils/toExcel.js'
+import {connect} from 'dva'
 
 const {Option} = Select;
 const { RangePicker } = DatePicker;
@@ -12,8 +13,12 @@ function SelectKind(){
             <Select  placeholder="请选择品系" showSearch size='large'
                     style={{ width: '140px', height: '32px', marginLeft: '8px', fontSize: '12px' }}
                     onChange={()=>console.log(111)} allowClear>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
+                <Option value="热带雨林植物">热带雨林植物</Option>
+                <Option value="热带沙漠植物">热带沙漠植物</Option>
+                <Option value="地中海植物">地中海植物</Option>
+                <Option value="热带草原植物">热带草原植物</Option>
+                <Option value="热带季风植物">热带季风植物</Option>
+                <Option value="温带季风植物">温带季风植物</Option>
             </Select>
         </div>
     )
@@ -91,16 +96,22 @@ class SearchBar extends React.Component{
     }
     // 搜索
     onSearch = ()=>{
-        const kind = Boolean(this.state.kind)?this.state.kind:'*',
-              num = Boolean(this.state.device)?this.state.num:'*',
-              attr = Boolean(this.state.tag)?this.state.attr:'*',
-              time = this.state.time;
-
+        const kind = Boolean(this.state.kind)?this.state.kind:undefined,
+              site = Boolean(this.state.site)?this.state.site:undefined,
+              attr = Boolean(this.state.attr)?this.state.attr:undefined;
+        this.props.dispatch({
+            type:'tags/getTags',
+            payload:{
+                kind:kind,
+                site:site,
+                attr:attr
+            }
+        })
         // 传给父组件的值 子传父
-        this.props.parent({kind,num,attr,time})
+        // this.props.parent({kind,num,attr,time})
 
-        // 父组件传过来的函数  父传子
-        this.props.onSearch();
+        // // 父组件传过来的函数  父传子
+        // this.props.onSearch();
     }
     // 导出
     export = async (e) => {
@@ -134,8 +145,12 @@ class SearchBar extends React.Component{
                     <p style={{ float: 'left', fontSize: '12px', fontWeight: 600 }}>品系</p>
                     <Select  value={this.state.kind} onChange={this.onChangeKind} placeholder="请选择品系" showSearch size='large'
                             style={{ width: '140px', height: '32px', marginLeft: '8px', fontSize: '12px' }} allowClear>
-                        <Option value="jack">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
+                        <Option value="热带雨林植物">热带雨林植物</Option>
+                        <Option value="热带沙漠植物">热带沙漠植物</Option>
+                        <Option value="地中海植物">地中海植物</Option>
+                        <Option value="热带草原植物">热带草原植物</Option>
+                        <Option value="热带季风植物">热带季风植物</Option>
+                        <Option value="温带季风植物">温带季风植物</Option>
                     </Select>
                 </div>
             {/* 种植位输入框 */}
@@ -185,4 +200,4 @@ class SearchBar extends React.Component{
         )
     }
 }
-export default SearchBar
+export default connect(({tags})=>(tags))(SearchBar)
