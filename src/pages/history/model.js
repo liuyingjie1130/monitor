@@ -5,7 +5,8 @@ export default {
       searchValue:'',
       visible:false,
       flag:'add',
-      tableData:[]
+      tableData:[],
+      data:[]
   },
     subscriptions: {
       setup({dispatch, history}) {
