@@ -22,7 +22,7 @@ class Finsh extends Component {
         console.log(infor);
         let cardNum=[];
         for(var i=0;i<infor.length;i++){
-            cardNum.push(1)
+            cardNum.push(infor[i])
         }
         console.log(cardNum);
         return (
@@ -31,10 +31,10 @@ class Finsh extends Component {
                 <div style={{padding:20}}>            
                     <Row gutter={16} style={{padding:'0px 0px'}}>
                     {
-                        cardNum.map((infor,index)=>{
+                        cardNum.map((item,index)=>{
                             return(
                                 <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
-                                    <Card item={infor}/>
+                                    <Card item={item}/>
                                 </Col>)
                         })
                     }
