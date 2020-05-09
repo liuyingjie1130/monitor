@@ -63,7 +63,7 @@ class SearchBar extends React.Component{
               start=time[0],
               end=time[1];
         this.props.dispatch({
-            type:'alert/getAllDrivers',
+            type:'alert/selectAlert',
             payload:{
                 kind,site,attr,start,end
             }

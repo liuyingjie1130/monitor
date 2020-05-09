@@ -33,7 +33,7 @@ class Details extends Component {
           okText="确认"
           cancelText="取消"
         >
-          <p>位号名称：{item.kind}{item.site}</p>
+          <p>位号名称：{item.name}</p>
           <p>实测值：{item.value}</p>
           <p>正常值：{item.min}~{item.max}{item.unit}</p>
           <p>报警描述：{item.attr}的值超出正常范围</p>

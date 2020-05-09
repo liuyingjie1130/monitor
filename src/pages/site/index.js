@@ -72,16 +72,21 @@ render(){
         <div>
             <div style={{padding:20}}>  
                 {/* 此处为搜索的那堆 */}
-                <div className={styles.searchBar}>
-                <Search
-                placeholder="请输入名称"
-                value={searchValue}
-                onSearch={this.onSearch}
-                onChange={this.onChange}
-                style={{ width: 250 }}
-                size="large"
-                />
-                <Button size="large" onClick={this.add}>新建种植号</Button>
+                <div className={styles.dec}>
+                    <div className={styles.searchBar}>
+                        <Search
+                        placeholder="请输入名称"
+                        value={searchValue}
+                        onSearch={this.onSearch}
+                        onChange={this.onChange}
+                        style={{ width: 250 }}
+                        size="large"
+                        />
+                    <Button size="large" onClick={this.add}>新建种植号</Button>
+                </div>
+                <div className={styles.img}>
+                    <img src={require(`../../assets/imgs/dec1.png`)} className={styles.img}/>
+                </div>
             </div>
                 <div>
                     <Row gutter={16} style={{padding:'0px 0px'}}>

@@ -5,7 +5,6 @@ import styles from './index.less';
 import Littlecard from './components/Littlecard.js'
 import Search from './components/Search.js'
 import Page from './components/Page.js'
-
 import moment from 'moment';
 
 // const {Search}=Input;
@@ -43,7 +42,14 @@ render(){
     console.log(searchValue,'searchvalue',rt)
     return (
         <div>
-            <div><Search/></div>
+            <div className={styles.dec}>
+                <div><Search/></div>
+                <div className={styles.img}>
+                    <img src={require(`../../assets/imgs/dec5.png`)} className={styles.img1}/>
+                    <img src={require(`../../assets/imgs/dec5.png`)} className={styles.img2}/>
+                    <img src={require(`../../assets/imgs/dec5.png`)} className={styles.img3}/>
+                </div>
+            </div>
             <div style={{padding:20}}> 
                 {
                     searchValue?<Row gutter={16} style={{padding:'0px 0px'}}>
@@ -57,7 +63,6 @@ render(){
                     }
                     </Row>:<Empty description={'请先选择种植位'} imageStyle={{height:'300px'}}/>
                 }           
-                
             </div>
             {/* {this.props.test.map((item)=><div>{item}</div>)} */}
             {/* <div style={{float:"right",marginRight:20,marginTop:40}}>

@@ -15,8 +15,8 @@ class Tags extends Component {
 render(){
   return (
       <div>
-          <CollapsePanel tags={true}/>
-          <Table/>
+        <CollapsePanel tags={true}/>
+        <Table/>
       </div>
   );
 }

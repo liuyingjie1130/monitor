@@ -17,6 +17,13 @@ class Finsh extends Component {
             
         }
       } 
+      componentDidMount(){
+        this.props.dispatch({
+            type:'alert/selectAlert',
+            payload:{
+            }
+        })
+      }
     render(){
         const {searchValue,infor} = this.props;
         console.log(infor);
@@ -33,7 +40,7 @@ class Finsh extends Component {
                     {
                         cardNum.map((item,index)=>{
                             return(
-                                <Col sm={12} md={8} lg={6} xl={4} xxl={4} key={index}>
+                                <Col sm={8} md={6} lg={6} xl={6} xxl={2} key={index}>
                                     <Card item={item}/>
                                 </Col>)
                         })

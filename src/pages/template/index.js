@@ -73,19 +73,23 @@ render(){
     let displayTems = templates.slice((pageNumber-1)*18,pageNumber*18)
     return (
         <div style={{padding:20}}>
-            <div className={styles.searchBar}>
-                <Search
-                placeholder="请输入模板名称"
-                value={searchValue}
-                allowClear
-                onSearch={this.onSearch}
-                onChange={this.onChange}
-                style={{ width: 250 }}
-                size="large"
-                />
-                <Button size="large" onClick={this.add}>新建模板</Button>
+            <div className={styles.dec}>
+                <div className={styles.searchBar}>
+                    <Search
+                    placeholder="请输入模板名称"
+                    value={searchValue}
+                    allowClear
+                    onSearch={this.onSearch}
+                    onChange={this.onChange}
+                    style={{ width: 250 }}
+                    size="large"
+                    />
+                    <Button size="large" onClick={this.add}>新建模板</Button>
+                </div>
+                <div className={styles.img}>
+                    <img src={require(`../../assets/imgs/dec1.png`)} className={styles.img}/>
+                </div>
             </div>
-            
             <Row gutter={16} style={{padding:'0px 0px'}}>
             {
                 displayTems.map((item,index)=>{

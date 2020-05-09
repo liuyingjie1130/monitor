@@ -15,7 +15,7 @@ export default {
       }
     },
     effects: {
-        *getAllDrivers({ payload }, { call, put, select }) { 
+        *selectAlert({ payload }, { call, put, select }) { 
             const data=yield call(apis.selectAlert,payload); 
             if(data.code==200){
               yield put({

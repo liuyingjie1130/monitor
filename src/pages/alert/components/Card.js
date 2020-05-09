@@ -27,7 +27,7 @@ render(){
     return (
         <div className={styles.card} >
             <div>
-                <p>位号：{item.site}</p> 
+                <p>位号：{item.name}</p> 
                 <p>实测值：{item.value}</p>
                 <div className={styles.bottom}>
                 <p>上下限：{item.min}~{item.max} {item.unit}</p>    
