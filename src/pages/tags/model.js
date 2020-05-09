@@ -1,11 +1,13 @@
 import apis from '../../services/index'
+import io from 'socket.io-client'
 export default {
-    namespace: 'his',
+    namespace: 'tags',
     state: {
       searchValue:'',
       visible:false,
-      flag:'add',
-      tableData:[]
+      rt:[],
+      // flag:'add',
+      // tableData:[]
   },
     subscriptions: {
       setup({dispatch, history}) {
@@ -24,14 +26,14 @@ export default {
       }
     },
     effects: {
-        *getAllDrivers({ payload }, { call, put, select }) { 
-            const data=yield call(apis.getAllDrivers,payload);
-           
+        *getTags({ payload }, { call, put, select }) { 
+            const data=yield call(apis.getTags,payload);
+           console.log(data,222);
             if(data.code==200){
               yield put({
                   type:"updateStates",
                   payload:{
-                    drivers:data.data
+                    rt:data.data
                   }
               })
             }

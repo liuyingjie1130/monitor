@@ -4,34 +4,36 @@ import { Icon, Modal, Button} from 'antd';
 import styles from './Card.less';
 import Details from './Details.js';
 
+
+
 class Card extends Component {
     constructor(props) {
         super(props)
         this.state={
+            
         }
-    }
+      }
     details = (id)=>{
+        // console.log(id)
         this.props.dispatch({
-            type:'alert/updateStates',
+            type:'current/updateStates',
             payload:{
-                visible:true,
+                // flag:'details',
+                visible:true
             }
         })
     }
 
 render(){
-    const {item}=this.props
-    console.log(item);
-    let data=item;
-    console.log(data);
+    // console.log(searchValue)
     return (
         <div className={styles.card} >
             <div>
-                <p>位号：{item.site}</p> 
-                <p>实测值：{item.value}</p>
+                <p>位号：1</p> 
+                <p>实测值：</p>
                 <div className={styles.bottom}>
-                <p>上下限：{item.min}~{item.max} {item.unit}</p>    
-                    <div className={styles.right}><Details item={item}/></div>       
+                    <span>上下限：</span>    
+                    <span className={styles.right}><Details /></span>       
                 </div>            
             </div>
         </div>

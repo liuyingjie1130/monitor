@@ -1,7 +1,7 @@
 import Table from './components/Table'
 import { Component} from 'react';
 import {connect} from 'dva';
-import CollapsePanel from '../../components/highSearch/index'
+import CollapsePanel from './components/highSearch/index'
 
 class Tags extends Component {
   constructor(props) {
@@ -21,4 +21,4 @@ render(){
   );
 }
 }
-export default connect()(Tags)
+export default connect(({tags})=>(tags))(Tags)

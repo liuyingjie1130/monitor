@@ -43,14 +43,14 @@ class Littlecard extends Component {
     }
 
 render(){
-    const {searchValue,item} =this.props;
+    const {searchValue} =this.props;
     // console.log(searchValue)
     return (
         <div className={styles.card}>
-            <div className={styles.img}><img src={require(`../../../assets/imgs/${item.kind}.png`)} style={{width:'100%'}}/></div>
-    <p className={styles.name}>{item.name}</p>
+            <div className={styles.img}><img src={imgT} style={{width:'100%'}}/></div>
+            <p className={styles.name}>种植位号</p>
             <div className={styles.lastRow}>
-                <div>{item.kind}</div>
+                <div>品种</div>
                 <div>
                     <Icon type="edit" className={styles.icon} onClick={()=>{this.edit(11)}} />
                     <Icon type="delete" className={styles.icon} style={{marginLeft:10}} onClick={()=>{this.delete(11,'苹果种植位')}}/>

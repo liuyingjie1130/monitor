@@ -213,113 +213,62 @@ import {connect} from 'dva';
 
 
 class TagsTable extends React.Component{
+  componentDidMount(){
+    this.props.dispatch({
+      type:'tags/getTags',
+      payload:{
+      }
+  })
+  }
   render(){
     const columns = [
       {
         title: '序号',
-        dataIndex: '序号',
+        dataIndex: 'id',
       },
       {
         title: '位号名称',
-        dataIndex: '位号名称',
+        dataIndex: 'name',
       },
       {
         title: '描述',
-        dataIndex: '描述',
+        dataIndex: 'description',
       },
       {
         title: '上限',
-        dataIndex: '上限',
+        dataIndex: 'max',
       },
       {
         title: '下限',
-        dataIndex: '下限',
+        dataIndex: 'min',
       },
       {
         title: '计量单位',
-        dataIndex: '计量单位',
+        dataIndex: 'unit',
       },
     ];
-    const data = [
-      {
-        序号: '1',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '2',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '3',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '4',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '5',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '6',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-      {
-        序号: '8',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },{
-        序号: '9',
-        位号名称: '温度',
-        描述: '',
-        上限: 35,
-        下限:-10,
-        计量单位:'℃'
-      },
-    ];
+    const {rt} = this.props
+    let data = rt?rt:[]
+        console.log(data,1111,rt);
+    let real = [];
+    data.map((item,index)=>{
+      real.push({
+        id:index+1,
+        name:item.name,
+        description:item.description,
+        max:item.max,
+        min:item.min,
+        unit:item.unit
+      })
+    })
     return(
-      <Table columns={columns} dataSource={data} size="middle" rowKey={record=>record.序号}
+      <Table columns={columns} dataSource={real} size="middle" rowKey={record=>record.id}
       pagination={{showQuickJumper:true,pageSize:5, showTotal:total => `共 ${total} 条`}}/>
     )
   }
 }
 
-export default TagsTable
+export default connect(({tags})=>(tags))(TagsTable)
 
 // ReactDOM.render(
 //   <div>
